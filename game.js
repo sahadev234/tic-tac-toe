@@ -42,10 +42,11 @@ boxes.forEach((element) => {
         // First, check if there's a winner
         checkWinner();
         
-        // Only check for a draw if no winner has been declared
-        if (counter === 9 && !msg.classList.contains("hide")) {
-            showDraw();
-        }
+      // Only check for a draw if no winner has been declared
+if (counter === 9 && !msg.classList.contains("hide")) {
+    showDraw();
+}
+
     });
 });
 
