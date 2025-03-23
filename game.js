@@ -25,27 +25,30 @@ let btnClick= () =>{
 }
 
 boxes.forEach((element) => {
-    element.addEventListener("click",() =>{
-       btnClick();
-       if (counter===9){
-        showDraw();
-       }
-        if (turnO===true){
-           element.innerText="X";
-           element.style.color="blue";
-            
-            turnO=false;
+    element.addEventListener("click", () => {
+        btnClick();
+
+        if (turnO) {
+            element.innerText = "X";
+            element.style.color = "blue";
+            turnO = false;
+        } else {
+            element.innerText = "O";
+            element.style.color = "green";
+            turnO = true;
         }
-        else{
-            element.innerText="O";
-            turnO=true;
-            element.style.color="green";
+        element.disabled = true;
+
+        // First, check if there's a winner
+        checkWinner();
+        
+        // Only check for a draw if no winner has been declared
+        if (counter === 9 && !msg.classList.contains("hide")) {
+            showDraw();
         }
-      element.disabled=true;
-      checkWinner();
-      
-    })
+    });
 });
+
 const resetBtn= () =>{
     turnO=true;
     enableBtn();
